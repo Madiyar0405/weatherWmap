@@ -1,5 +1,26 @@
 extends layout
 
 block content
-  h1= title
-  p Welcome to #{title}
+  .container
+    .row
+      .col-sm-4
+        .input-group.mb-3
+          input.form-control(type="text", name="city", placeholder="Enter city name", aria-describedby="form_map")
+          .input-group-append
+            button.btn.btn-primary(type="button", id="form_map") Find
+      .col-sm-8
+        #map.map-container
+
+  .container
+    h1(style="text-align: center; margin-top: 20px;") Photos
+    form(id="myForm", autocomplete="off")
+      .form-group
+        input(type="text", class="form-control", id="search", placeholder="Search Photos", required)
+      .form-group
+        button.btn.btn-danger.btn-block
+          | Search photos
+      #result
+
+block js
+  script(src="https://api-maps.yandex.ru/2.1-dev/?apikey=0dc78a9e-681b-4057-a6d3-2991551a1b48&lang=en_US")
+  script(src="/javascripts/main.js")
